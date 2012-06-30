@@ -39,30 +39,30 @@ adb reboot bootloader
 echo "Enjoy!"
 echo -n "Want a custom recovery while were at it (y/n) ->  "
 read choice
-  if "$choice" == y
+if [ "$choice" == "y" ]
 then
   echo "Okay, thanks for using the Utility."
   echo "Good-Bye"
 sleep 3
   exit 1
 fi
-  if "$choice" == n
+if [ "$choice" == "n" ]
 then
   echo "Lets install that recovery then!"
   echo "Please follow any instructions given!"
-adb wait-for-device
-adb push "recovery.zip /sdcard/PG76IMG.zip"
-echo "We will now reboot into hboot. Please follow all directions."
-adb "reboot oem-42"
-echo "Push Vol-Up and then press power button."
-adb wait-for-device
-sleep 60
-adb "shell rm /sdcard/PG76IMG.zip"
-adb reboot recovery
-echo "Your now in recovery! Enjoy."
-echo "If you like this please donate. Check xda, user simonsimons34."
-sleep 6
-echo "Good-Bye"
-sleep 3
-exit 1
+  adb wait-for-device
+  adb push "recovery.zip /sdcard/PG76IMG.zip"
+  echo "We will now reboot into hboot. Please follow all directions."
+  adb "reboot oem-42"
+  echo "Push Vol-Up and then press power button."
+  adb wait-for-device
+  sleep 60
+  adb "shell rm /sdcard/PG76IMG.zip"
+  adb reboot recovery
+  echo "Your now in recovery! Enjoy."
+  echo "If you like this please donate. Check xda, user simonsimons34."
+  sleep 6
+  echo "Good-Bye"
+  sleep 3
+  exit 1
 fi
